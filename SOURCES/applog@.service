@@ -1,0 +1,14 @@
+# Location: /etc/systemd/system/applog@.service
+[Unit]
+Description=AppLog
+
+[Service]
+Type = forking
+Environment="SCRIPT_ARGS=%I"
+ExecStart = /usr/local/bin/applog start $SCRIPT_ARGS
+ExecStop = /usr/local/bin/applog stop $SCRIPT_ARGS
+ExecReload = /usr/local/bin/applog restart $SCRIPT_ARGS
+
+[Install]
+WantedBy = multi-user.target
+
